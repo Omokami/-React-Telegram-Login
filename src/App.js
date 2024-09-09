@@ -7,7 +7,7 @@ function App() {
     console.log('User data:', user);
 
     // Send user data to your backend server for verification and processing
-    fetch('http://89.221.225.12:5000/auth/telegram', { // Replace with your actual backend URL
+    fetch('localhost:5000/auth/telegram', { // Replace with your actual backend URL
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(user),
