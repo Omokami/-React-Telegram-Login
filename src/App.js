@@ -41,12 +41,19 @@ function App() {
     script.setAttribute('data-onauth', 'onTelegramAuth(user)'); // Callback for auth
     script.setAttribute('data-request-access', 'write'); // Request access to send messages
 
-    // Append the script to the body
-    document.body.appendChild(script);
+    // Find the specific <div> where the button should be rendered
+    const telegramLoginButtonDiv = document.getElementById('telegram-login-button');
+    
+    // Append the script to the specific <div> instead of the body
+    if (telegramLoginButtonDiv) {
+      telegramLoginButtonDiv.appendChild(script);
+    }
 
     // Cleanup function to remove the script when the component unmounts
     return () => {
-      document.body.removeChild(script);
+      if (telegramLoginButtonDiv) {
+        telegramLoginButtonDiv.removeChild(script);
+      }
     };
   }, []);
 
