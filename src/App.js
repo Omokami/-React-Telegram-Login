@@ -6,8 +6,8 @@ function App() {
   const onTelegramAuth = (user) => {
     console.log('User data:', user);
 
-    // Example: Send user data to your server for verification and processing
-    fetch('/auth/telegram', {
+    // Send user data to your backend server for verification and processing
+    fetch('http://89.221.225.12:5000/auth/telegram', { // Replace with your actual backend URL
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(user),
@@ -43,7 +43,7 @@ function App() {
 
     // Find the specific <div> where the button should be rendered
     const telegramLoginButtonDiv = document.getElementById('telegram-login-button');
-    
+
     // Append the script to the specific <div> instead of the body
     if (telegramLoginButtonDiv) {
       telegramLoginButtonDiv.appendChild(script);
