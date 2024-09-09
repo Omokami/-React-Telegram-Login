@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import axios from 'axios'; // Import Axios
 import './App.css';
 
 function App() {
@@ -6,14 +7,10 @@ function App() {
   const onTelegramAuth = (user) => {
     console.log('User data:', user);
 
-    // Send user data to your backend server for verification and processing
-    fetch('https://telegram-widget-server-ma6p174kh-elias-projects-9dd04c6c.vercel.app/auth/telegram', { // Replace with your actual backend URL
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(user),
-    })
+    // Use Axios to send user data to your backend server
+    axios.post('https://telegram-widget-server-ma6p174kh-elias-projects-9dd04c6c.vercel.app/auth/telegram', user) // Replace with your actual backend URL
       .then((response) => {
-        if (response.ok) {
+        if (response.status === 200) {
           alert('Logged in successfully!');
         } else {
           alert('Failed to log in.');
