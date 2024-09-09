@@ -1,23 +1,32 @@
 .App {
   text-align: center;
-  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  margin: 0; /* Remove any default margin */
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: #282c34;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   color: white;
 }
 
 .App-header h1 {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .App-header p {
-  margin-bottom: 30px;
+  margin-bottom: 20px; /* Space between the text and button */
+}
+
+#telegram-login-button {
+  margin-top: 10px; /* Space above the button */
 }
