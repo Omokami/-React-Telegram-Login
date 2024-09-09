@@ -34,10 +34,12 @@ function App() {
     const script = document.createElement('script');
     script.src = 'https://telegram.org/js/telegram-widget.js?22';
     script.async = true;
-    script.setAttribute('data-telegram-login', 'yourbotusername'); // Replace with your bot username
-    script.setAttribute('data-size', 'large');
-    script.setAttribute('data-onauth', 'onTelegramAuth(user)');
-    script.setAttribute('data-request-access', 'write');
+    script.setAttribute('data-telegram-login', 'unigames_tg_bot'); // Replace with your bot username
+    script.setAttribute('data-size', 'large'); // Large button size
+    script.setAttribute('data-userpic', 'true'); // Show user photo
+    script.setAttribute('data-radius', 'default'); // Default corner radius
+    script.setAttribute('data-onauth', 'onTelegramAuth(user)'); // Callback for auth
+    script.setAttribute('data-request-access', 'write'); // Request access to send messages
 
     // Append the script to the body
     document.body.appendChild(script);
