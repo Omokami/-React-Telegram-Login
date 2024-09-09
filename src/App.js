@@ -25,7 +25,6 @@ function App() {
       });
   };
 
-  // Dynamically load the Telegram widget when the component mounts
   useEffect(() => {
     // Define the global function that the widget will call upon authentication
     window.onTelegramAuth = onTelegramAuth;
@@ -35,24 +34,22 @@ function App() {
     script.src = 'https://telegram.org/js/telegram-widget.js?22';
     script.async = true;
     script.setAttribute('data-telegram-login', 'unigames_tg_bot'); // Replace with your bot username
-    script.setAttribute('data-size', 'large'); // Large button size
-    script.setAttribute('data-userpic', 'true'); // Show user photo
-    script.setAttribute('data-radius', 'default'); // Default corner radius
-    script.setAttribute('data-onauth', 'onTelegramAuth(user)'); // Callback for auth
-    script.setAttribute('data-request-access', 'write'); // Request access to send messages
+    script.setAttribute('data-size', 'large');
+    script.setAttribute('data-userpic', 'true');
+    script.setAttribute('data-radius', 'default');
+    script.setAttribute('data-onauth', 'onTelegramAuth(user)');
+    script.setAttribute('data-request-access', 'write');
 
-    // Find the specific <div> where the button should be rendered
-    const telegramLoginButtonDiv = document.getElementById('telegram-login-button');
-
-    // Append the script to the specific <div> instead of the body
-    if (telegramLoginButtonDiv) {
-      telegramLoginButtonDiv.appendChild(script);
+    // Append the script to the target div
+    const targetDiv = document.getElementById('telegram-login-button');
+    if (targetDiv) {
+      targetDiv.appendChild(script);
     }
 
     // Cleanup function to remove the script when the component unmounts
     return () => {
-      if (telegramLoginButtonDiv) {
-        telegramLoginButtonDiv.removeChild(script);
+      if (targetDiv) {
+        targetDiv.removeChild(script);
       }
     };
   }, []);
