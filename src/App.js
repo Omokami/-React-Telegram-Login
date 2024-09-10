@@ -1,15 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios'; // Import Axios
 import './App.css';
 
 function App() {
+  const [loading, setLoading] = useState(false); // State to track loading status
+
   // Function to handle Telegram authentication
   const onTelegramAuth = (user) => {
     console.log('User data:', user);
+    setLoading(true); // Set loading to true when the request starts
 
     // Use Axios to send user data to your backend server
-    axios.post('https://telegraf-unigame-bot.vercel.app/auth/telegram', user) 
+    axios.post('https://telegraf-unigame-bot.vercel.app/auth/telegram', user)
       .then((response) => {
+        setLoading(false); // Set loading to false when the request completes
         if (response.status === 200) {
           alert('Logged in successfully!');
         } else {
@@ -17,6 +21,7 @@ function App() {
         }
       })
       .catch((error) => {
+        setLoading(false); // Set loading to false in case of an error
         console.error('Error logging in:', error);
         alert('An error occurred while logging in. Please try again.');
       });
@@ -58,6 +63,8 @@ function App() {
         <p>Click the button below to log in with your Telegram account:</p>
         {/* The Telegram login button will be injected here by the widget script */}
         <div id="telegram-login-button"></div>
+        {/* Display the loading spinner if the request is in progress */}
+        {loading && <div className="spinner"></div>}
       </header>
     </div>
   );
