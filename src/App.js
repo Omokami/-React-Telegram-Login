@@ -8,7 +8,7 @@ function App() {
     console.log('User data:', user);
 
     // Use Axios to send user data to your backend server
-    axios.post('https://telegram-widget-server.vercel.app/auth/telegram', user) 
+    axios.post('https://telegraf-unigame-bot.vercel.app/auth/telegram', user) 
       .then((response) => {
         if (response.status === 200) {
           alert('Logged in successfully!');
