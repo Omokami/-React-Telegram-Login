@@ -11,7 +11,7 @@ function App() {
     setLoading(true); // Set loading to true when the request starts
 
     // Use Axios to send user data to your backend server
-    axios.post('https://telegraf-unigame-bot.vercel.app/auth/telegram', user)
+    axios.post('https://unigamesbot.vercel.app/auth/telegram', user)
       .then((response) => {
         setLoading(false); // Set loading to false when the request completes
         if (response.status === 200) {
