@@ -10,7 +10,7 @@ function App() {
     console.log('User data:', user);
     setLoading(true); // Set loading to true when the request starts
 
-    // Use Axios to send user data to your backend server
+    // Use Axios to send user data to backend server
     axios.post('https://unigamesbot.vercel.app/auth/telegram', user)
       .then((response) => {
         setLoading(false); // Set loading to false when the request completes
@@ -35,7 +35,7 @@ function App() {
     const script = document.createElement('script');
     script.src = 'https://telegram.org/js/telegram-widget.js?22';
     script.async = true;
-    script.setAttribute('data-telegram-login', 'unigames_tg_bot'); // Replace with your bot username
+    script.setAttribute('data-telegram-login', 'unigames_tg_bot'); // Replace with bot username
     script.setAttribute('data-size', 'large');
     script.setAttribute('data-userpic', 'true');
     script.setAttribute('data-radius', 'default');
@@ -60,10 +60,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Login with Telegram</h1>
-        <p>Click the button below to log in with your Telegram account:</p>
-        {/* The Telegram login button will be injected here by the widget script */}
+        <p>Click the button below to log in with Telegram account:</p>
         <div id="telegram-login-button"></div>
-        {/* Display the loading spinner if the request is in progress */}
         {loading && <div className="spinner"></div>}
       </header>
     </div>
